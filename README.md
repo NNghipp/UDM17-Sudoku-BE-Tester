@@ -1,5 +1,39 @@
 # UDM_17 — Game Sudoku đối kháng
 
+## Chạy Sudoku trên giả lập Android Studio
+
+Ứng dụng dùng **C#/.NET MAUI**; build bằng .NET, chạy APK trên Android Emulator. Không cần BrowserStack.
+
+- [Hướng dẫn mở giả lập, bật backend và mở client B](HUONG_DAN_CHAY_SUDOKU_ANDROID_STUDIO.md)
+- [Tải APK Android Release đã chuẩn bị](apk/Sudoku.Mobile-Signed.apk) — mở file trên GitHub và chọn **Download raw file**.
+- [Script mở nhanh Android và backend](testing/Start-Android.ps1)
+
+**Chuẩn bị lần đầu:** cài môi trường .NET/MAUI, SQL Server LocalDB và Android SDK như các mục bên dưới; cấu hình API; trong Android Studio tạo máy ảo có tên/ID **Sudoku_Local** (hiển thị **Sudoku Local**). Từ thư mục gốc repository, build backend và client Windows B:
+
+```powershell
+dotnet build .\Sudoku.Api\Sudoku.Api.csproj
+dotnet build .\Sudoku.Server\Sudoku.Server.csproj
+dotnet build .\Sudoku.Mobile\Sudoku.Mobile.csproj -f net10.0-windows10.0.19041.0 -c Debug
+```
+
+**Mở nhanh điện thoại và backend:**
+
+```powershell
+.\testing\Start-Android.ps1
+```
+
+Script dùng bản APK vừa publish trong `..\outputs\android-local` nếu có; nếu chưa có, dùng APK kèm repository trong `apk\Sudoku.Mobile-Signed.apk`. Trên điện thoại đăng nhập **test_player_a / SudokuTest!2026**.
+
+**Mở người chơi B trên Windows:**
+
+```powershell
+Start-Process .\Sudoku.Mobile\bin\Debug\net10.0-windows10.0.19041.0\win-x64\Sudoku.Mobile.exe -ArgumentList '--dev-player=test_player_b','--dev-quick-match'
+```
+
+Trên Android chọn **FIND OPPONENT** để đấu với B. B tự đăng nhập **test_player_b**; mật khẩu cùng là **SudokuTest!2026**. Các tài khoản mẫu do API tạo trong môi trường Development.
+
+Nếu đã mở máy ảo bằng nút ▶ của Android Studio, làm theo hướng dẫn mở thủ công, không chạy thêm script để mở cùng máy ảo lần thứ hai.
+
 ## 1. Thông tin đề tài
 
 | Thông tin | Nội dung |

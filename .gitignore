@@ -361,3 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Local BrowserStack credentials and Android signing keys
+browserstack.local.json
+*.keystore
+*.jks
