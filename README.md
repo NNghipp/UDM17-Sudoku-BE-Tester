@@ -22,6 +22,14 @@ dotnet build .\Sudoku.Mobile\Sudoku.Mobile.csproj -f net10.0-windows10.0.19041.0
 .\testing\Start-Android.ps1
 ```
 
+Nếu ứng dụng đã cài, script mở lại mà không cài APK mỗi lần. Sau khi build APK mới, yêu cầu cài lại bằng:
+
+```powershell
+.\testing\Start-Android.ps1 -Reinstall
+```
+
+Đóng các giả lập khác trước khi chạy script. Sau khi máy ảo mới khởi động, script chờ thêm 30 giây để dịch vụ Android ổn định.
+
 Script dùng bản APK vừa publish trong `..\outputs\android-local` nếu có; nếu chưa có, dùng APK kèm repository trong `apk\Sudoku.Mobile-Signed.apk`. Trên điện thoại đăng nhập **test_player_a / SudokuTest!2026**.
 
 **Mở người chơi B trên Windows:**

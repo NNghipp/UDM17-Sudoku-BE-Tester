@@ -115,7 +115,15 @@ Set-Location 'E:\prj_sudoku\UDM17-Sudoku'
 .\testing\Start-Android.ps1
 ```
 
-Script tự bật backend, mở giả lập ở port `5556`, cài APK và mở Sudoku. Sau đó đăng nhập A rồi mở B bằng lệnh ở Bước 4.
+Script tự bật backend, mở giả lập ở port `5556` và mở Sudoku. APK chỉ được cài khi ứng dụng chưa có hoặc khi yêu cầu `-Reinstall`. Sau đó đăng nhập A rồi mở B bằng lệnh ở Bước 4.
+
+Sau khi build APK mới, chạy:
+
+```powershell
+.\testing\Start-Android.ps1 -Reinstall
+```
+
+Đóng các giả lập khác trước khi chạy script. Script chờ thêm 30 giây sau khi máy ảo mới boot; nếu dịch vụ cài đặt chưa sẵn sàng, đợi một phút rồi thử lại. Cấu hình giả lập hiện dùng 2 CPU, GPU software và không nạp/lưu snapshot.
 
 Chọn một trong hai cách khởi động máy ảo. Nếu đã chạy **Sudoku Local** bằng nút ▶ trong Android Studio, không chạy tiếp script để tránh mở cùng máy ảo lần nữa ở port khác.
 
